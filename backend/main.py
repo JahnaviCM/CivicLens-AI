@@ -13,11 +13,13 @@ app = FastAPI(
     version="3.0.0",
 )
 
+# CORS: Allow local development and the deployed Netlify frontend.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "https://civiclens-ai-ahjm.netlify.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -277,13 +279,19 @@ def analyze_issue(title, description):
 
     if score >= 60:
         priority = "High"
-        reason = "Issue type and reported risk indicators suggest higher priority."
+        reason = (
+            "Issue type and reported risk indicators suggest higher priority."
+        )
     elif score >= 35:
         priority = "Medium"
-        reason = "Issue type and reported details suggest moderate priority."
+        reason = (
+            "Issue type and reported details suggest moderate priority."
+        )
     else:
         priority = "Low"
-        reason = "Few risk indicators were identified by the current rules."
+        reason = (
+            "Few risk indicators were identified by the current rules."
+        )
 
     return {
         "category": matched["category"],
