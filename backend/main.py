@@ -29,7 +29,7 @@ app.add_middleware(
 BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = BASE_DIR / "civiclens.db"
 
-ALLOWED_STATUSES = ["Reported", "In Progress", "Resolved"]
+ALLOWED_STATUSES = ["Reported", "Open", "In Progress", "Resolved"]
 
 
 # DATABASE
