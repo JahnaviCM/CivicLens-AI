@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import Globe from "react-globe.gl";
 import "./App.css";
 
-const API = "http://127.0.0.1:8000";
+const API = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 const CATEGORIES = [
   "Waste Management", "Drainage", "Water Pollution", "Air Pollution",
